@@ -207,7 +207,7 @@ if user_query:
 
                 if client and combined_content:
                     with st.spinner("🧠 Generating summary..."):
-                        response = process_content(combined_content, user_query, groq_model, 4000)
+                        response = process_content(combined_content, user_query, groq_model)
                         summary = response.choices[0].message.content
                         st.session_state.messages.append({"role": "assistant", "content": summary})
                         with st.chat_message("assistant"):
@@ -233,7 +233,7 @@ if user_query:
 
                             if client:
                                 with st.spinner("🧠 Summarizing..."):
-                                    response = process_content(transcript_text, "Summarize this video:", groq_model, 2000)
+                                    response = process_content(transcript_text, "Summarize this video:", groq_model)
                                     summary = response.choices[0].message.content
                                     st.session_state.messages.append({"role": "assistant", "content": summary})
                                     with st.chat_message("assistant"):
