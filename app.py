@@ -134,7 +134,20 @@ with st.sidebar:
         )
 
 # Initialize Groq client
-client = Groq(api_key=groq_api_key) if groq_api_key else None
+
+with st.sidebar:
+    # API key input for Groq
+    st.session_state["GROQ_API_KEY"] = st.text_input("GROQ API Key", type="password")
+    st.sidebar.markdown("🔑 [Get Groq API Key](https://console.groq.com/keys)")
+   
+   
+   # Initialize Groq client
+if st.session_state["GROQ_API_KEY"]:            
+    client = Groq(api_key=st.session_state["GROQ_API_KEY"])
+else :
+    client = Groq(api_key=os.environ.get("GROQ_API_KEY", st.secrets.get("GROQ_API_KEY", "sk-your-key")))
+    
+#client = Groq(api_key=groq_api_key) if groq_api_key else None
 
 # Main app
 st.title("🔍 AI Research Assistant+")
