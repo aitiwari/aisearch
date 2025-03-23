@@ -350,27 +350,56 @@ if user_query:
         st.error(f"Error: {str(e)}")
 
 # Enhanced dark mode styling
+# Theme-adaptive styling
 st.markdown("""
 <style>
+    /* Base styles that adapt to theme */
     .stApp {
-        background-color: #0E1117;
-        color: #FAFAFA;
+        background-color: var(--background-color);
+        color: var(--text-color);
     }
+    
     .stChatInput textarea {
-        color: #FAFAFA !important;
+        color: var(--text-color) !important;
     }
+    
     .stRadio > div > label > div {
-        color: white !important;
+        color: var(--text-color) !important;
     }
+    
+    /* Theme-aware expander styling */
     .stExpander {
-        background-color: #1A1D23;
-        border-color: #2F333D !important;
+        background-color: var(--secondary-background-color);
+        border-color: var(--border-color) !important;
     }
-    .st-emotion-cache-1dp5vir {
-        background-image: none;
+    
+    .stExpander .streamlit-expanderHeader {
+        color: var(--text-color);
     }
+    
+    /* Image styling */
     .stImage > img {
         border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Theme-aware link colors */
+    a {
+        color: var(--link-text-color) !important;
+    }
+    
+    /* Adaptive scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--secondary-background-color);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 4px;
     }
 </style>
 """, unsafe_allow_html=True)
