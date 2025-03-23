@@ -1,0 +1,6 @@
+streamlit 
+duckduckgo_search 
+beautifulsoup4 
+requests
+youtube_transcript_api
+groq
